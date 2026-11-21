@@ -1,0 +1,29 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: 安装构建依赖
+        run: npm ci --prefix 源码
+
+      - name: 构建与自检
+        run: npm --prefix 源码 run check
+
+      - name: 提交的构建产物与源码一致
+        run: git diff --exit-code -- status service

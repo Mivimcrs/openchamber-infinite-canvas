@@ -1,0 +1,54 @@
+{
+  "name": "openchamber-infinite-canvas",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "OpenChamber 扩展：一键起停 Infinite Canvas 桥接，写入/移除 OpenCode 的 infinite-canvas MCP 配置块，并打开画布网页。",
+  "license": "MIT",
+  "homepage": "https://github.com/Mivimcrs/openchamber-infinite-canvas",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mivimcrs/openchamber-infinite-canvas"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "openchamber": {
+    "apiVersion": 1,
+    "engines": {
+      "openchamber": ">=2.7.0"
+    },
+    "contributes": {
+      "panel": {
+        "id": "infinite-canvas",
+        "name": "无限画布",
+        "icon": "icon.svg",
+        "entry": "status/index.html"
+      },
+      "statusSection": {
+        "entry": "status/index.html",
+        "title": "无限画布",
+        "height": 176,
+        "defaultExpanded": true
+      },
+      "service": {
+        "entry": "service/main.mjs",
+        "runtime": "host",
+        "permissions": {
+          "exec": [
+            "node",
+            "powershell"
+          ]
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "node 源码/scripts/build.mjs",
+    "typecheck": "npm --prefix 源码 run typecheck",
+    "check-manifest": "node 源码/scripts/check-manifest.mjs",
+    "check-guest": "node 源码/scripts/check-guest.mjs",
+    "check-repo": "node 源码/scripts/check-repo.mjs",
+    "check": "npm --prefix 源码 run check"
+  }
+}

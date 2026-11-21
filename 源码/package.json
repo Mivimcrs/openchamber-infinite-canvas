@@ -1,0 +1,20 @@
+{
+  "name": "openchamber-infinite-canvas-source",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "typecheck": "tsc --noEmit",
+    "check-manifest": "node scripts/check-manifest.mjs",
+    "check-guest": "node scripts/check-guest.mjs",
+    "check-repo": "node scripts/check-repo.mjs",
+    "check": "npm run typecheck && npm run build && npm run check-manifest && npm run check-guest && npm run check-repo"
+  },
+  "devDependencies": {
+    "@openchamber/sdk": "^2.7.2",
+    "@types/node": "^22.10.0",
+    "esbuild": "^0.25.0",
+    "typescript": "^5.7.0"
+  }
+}
